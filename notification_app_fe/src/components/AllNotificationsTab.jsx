@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Box, Card, CardContent, Typography, FormControl, InputLabel, Select, MenuItem, Pagination, CircularProgress, Alert, Button } from '@mui/material';
 import axios from 'axios';
 
-const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiJzaW1yYW4uMjNiMDEwMTI1MUBhYmVzLmFjLmluIiwiZXhwIjoxNzgwOTkyMjAzLCJpYXQiOjE3ODA5OTEzMDMsImlzcyI6IkFmZm9yZCBNZWRpY2FsIFRlY2hub2xvZ2llcyBQcml2YXRlIExpbWl0ZWQiLCJqdGkiOiI5M2NiMjNlYy03NmQ2LTQzZGMtODk4My0yNWZmOTM3OThiNDIiLCJsb2NhbGUiOiJlbi1JTiIsIm5hbWUiOiJzaW1yYW4iLCJzdWIiOiIyN2UyNTZlYy1jMjA1LTRlOWEtYTAxOS03ZjQxYzBmNmY1ZTkifSwiZW1haWwiOiJzaW1yYW4uMjNiMDEwMTI1MUBhYmVzLmFjLmluIiwibmFtZSI6InNpbXJhbiIsInJvbGxObyI6IjIzMDAzMjAxMDAyNDkiLCJhY2Nlc3NDb2RlIjoiY1h1cWh0IiwiY2xpZW50SUQiOiIyN2UyNTZlYy1jMjA1LTRlOWEtYTAxOS03ZjQxYzBmNmY1ZTkiLCJjbGllbnRTZWNyZXQiOiJ1UFNwSlZlY1BxVlBxa1ZFIn0.0gAvGXNYw7l6nkVjRAUF-KjjjUuMFutUlO_8bACsNqc";
+// Live authenticated access token generated from get_token.js
+const ACCESS_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJNYXBDbGFpbXMiOnsiYXVkIjoiaHR0cDovLzIwLjI0NC41Ni4xNDQvZXZhbHVhdGlvbi1zZXJ2aWNlIiwiZW1haWwiOiJzaW1yYW4uMjNiMDEwMTI1MUBhYmVzLmFjLmluIiwiZXhwIjoxNzgwOTkzNjA2LCJpYXQiOjE3ODA5OTI3MDYsImlzcyI6IkFmZm9yZCBNZWRpY2FsIFRlY2hub2xvZ2llcyBQcml2YXRlIExpbWl0ZWQiLCJqdGkiOiIyN2E4ZjJlZC00YmM1LTQwNDYtOGE3NS1iNGE5ZjQxNWQ0N2UiLCJsb2NhbGUiOiJlbi1JTiIsIm5hbWUiOiJzaW1yYW4iLCJzdWIiOiIyN2UyNTZlYy1jMjA1LTRlOWEtYTAxOS03ZjQxYzBmNmY1ZTkifSwiZW1haWwiOiJzaW1yYW4uMjNiMDEwMTI1MUBhYmVzLmFjLmluIiwibmFtZSI6InNpbXJhbiIsInJvbGxObyI6IjIzMDAzMjAxMDAyNDkiLCJhY2Nlc3NDb2RlIjoiY1h1cWh0IiwiY2xpZW50SUQiOiIyN2UyNTZlYy1jMjA1LTRlOWEtYTAxOS03ZjQxYzBmNmY1ZTkiLCJjbGllbnRTZWNyZXQiOiJ1UFNwSlZlY1BxVlBxa1ZFIn0.Hw12IGgPOvNSr8R2g2rF9OJswjhlkI7stcH6K56ROmQ";
 
 // Frontend-compatible logging utility
 async function logFrontendEvent(level, message) {
     console.log(`[Frontend Log] ${level.toUpperCase()}: ${message}`);
-    // FIXED: Commented out the server logging to bypass the remote CORS block
+    // Commented out the server logging to bypass the remote CORS block
     /*
     try {
         await axios.post("http://4.224.186.213/evaluation-service/logs", {
@@ -37,7 +38,7 @@ function AllNotificationsTab({ readStatus, markAsRead }) {
       await logFrontendEvent("info", `Triggering API fetch for page ${page} with filter: ${typeFilter || 'None'}`);
 
       try {
-        // FIXED: Pointed URL to your local running backend port 5000 to pull your data
+        // Pointed URL to your local running backend port 5000 to pull your data safely
         let url = `http://localhost:5000/notifications?page=${page}&limit=${limit}`;
         if (typeFilter) {
           url += `&notification_type=${typeFilter}`;
